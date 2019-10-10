@@ -1,85 +1,53 @@
 <template>
   <div class="hello">
+  <!-- 绑定数据，绑定对象-->
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
+    <br>
+
+
+    <!--循环数组，渲染数据 -->
+    <ur>
+      <li v-for="item in list" >
+        {{item}}
       </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    </ur>
+    <hr>
+    <br>
+    <ur>
+    <li v-for="(item, index) in list1" :key="index">
+        {{item.title,index}}
+        <ol>
+          <li v-for="news in item.list">
+            {{news.title}}
+          </li>
+        </ol>
+    </li>
+    </ur>
+    <br>
+    <hr>
+    <ur>
+    <li v-for="(item, index) in list2" :key="index">
+        {{item.cate,index}}
+        <ol>
+          <li v-for="(item, index) in item.list" :key="index">
+            {{item.title,index}}
+          </li>
+        </ol>
+    </li>
+    </ur>
+
+
+
+    <!-- 绑定属性-->
+    <div v-bind:title="title">鼠标瞄上去看一下</div>
+    <!-- 绑定html,使传输的html数据解析后再显示 -->
+    <div v-html="h"></div>
+    <!-- 绑定数据的另外一种方式 -->
+    <div v-text="msg"></div>
+    <!-- 绑定Class，绑定Style -->
+    
+
   </div>
 </template>
 
@@ -88,7 +56,35 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Hello Vue!',
+      list:['list1','list2','list3'],
+      list1:[
+        {'title':'11111'},
+        {'title':'3333'},
+        {'title':'22222'},
+        {'title':'44444'}
+      ],
+      list2:[
+        {
+          "cate":"国内新闻",
+          list:[
+            {'title':'女排夺冠'},
+            {'title':'女排夺冠'},
+            {'title':'女排夺冠'}
+          ]
+        },
+         {
+          "cate":"国际新闻",
+          list:[
+            {'title':'女排夺冠'},
+            {'title':'女排夺冠'},
+            {'title':'女排夺冠'}
+          ]
+        }
+      ],
+      title:'鼠标瞄上去看下',
+      h:'<h2>我是h2</h2>'
+
     }
   }
 }
