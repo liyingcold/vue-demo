@@ -27,7 +27,12 @@
     </div>
 </template>
 
+
+
 <script>
+/* eslint-disable no-new */
+    import storage from '../model/storage.js';
+    
     export default{
         data() {
             return {
@@ -37,6 +42,7 @@
             }
         },
         methods: {
+            
             doAdd(e){
                 
                 if(e.keyCode==13){
@@ -50,7 +56,9 @@
                 
                 
                 // 刷新界面时保留上一次的数据
-                localStorage.setItem('list',JSON.stringify(this.list))
+                /*setItem无法保存对象，所以转换为json字符串*/
+                // localStorage.setItem('list',JSON.stringify(this.list))
+                storage.set('list',this.list);
             },
             removeData(key) {
             //    alert(key);
@@ -59,24 +67,26 @@
             this.list.splice(key,1);
 
             // 刷新界面时保留上一次的数据
-            localStorage.setItem('list',JSON.stringify(this.list))
+            // localStorage.setItem('list',JSON.stringify(this.list))
+            storage.set('list',this.list);
             },
             saveList(){
                 // 刷新界面时保留上一次的数据
-                localStorage.setItem('list',JSON.stringify(this.list))
+                // localStorage.setItem('list',JSON.stringify(this.list))
+                storage.set('list',this.list);
             }
         },
         mounted() {
-
+            console.log(storage)
             /*生命周期函数      vue刷新就会触发的方法*/
-            var list=JSON.parse(localStorage.getItem('list'));
+            var list=storage.get('list');
 
             /*注意判断，如果list为空，循环时就会出错*/ 
             if(list){
                 
                 this.list=list;
             }
-        },
+        }
     }
 
 </script>
