@@ -45,9 +45,16 @@
     <div v-html="h"></div>
     <!-- 绑定数据的另外一种方式 -->
     <div v-text="msg"></div>
-    <!-- 绑定Class，绑定Style -->
-    
-
+    <!-- 绑定Class -->
+    <div v-bind:class="{'red':flag}"> 绑定Clss</div>
+    <!-- 循环数据，第一个数据高亮 -->
+    <ul>
+      <li v-for="(item, index) in list1" :key="index" :class="{'red':index==0}">
+        {{item.title,index}}
+      </li>
+    </ul>
+    <!-- 绑定Style -->
+    <div class="box" v-bind:style="{'width':boxWdith+'px'}">我是另一个div</div>
   </div>
 </template>
 
@@ -83,7 +90,9 @@ export default {
         }
       ],
       title:'鼠标瞄上去看下',
-      h:'<h2>我是h2</h2>'
+      h:'<h2>我是h2</h2>',
+      flag:true,
+      boxWdith:300
 
     }
   }
@@ -105,5 +114,13 @@ li {
 }
 a {
   color: #42b983;
+}
+.red{
+  color:red;
+}
+.box{
+  height: 30px;
+  
+  background-color: aquamarine;
 }
 </style>
