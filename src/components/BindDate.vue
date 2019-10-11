@@ -41,7 +41,7 @@
     </div>
 </template>
 
-<script>
+<script> 
     // 双向数据绑定 MVVM vue就是一个mvvm框架
     export default{
         name: 'binddate',
