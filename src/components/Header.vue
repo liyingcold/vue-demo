@@ -1,11 +1,6 @@
 <template>
-    <div>
-        <h2>这是一个头部组件</h2>
-        <ul>
-            <li>
-
-            </li>
-        </ul>
+    <div id="header">
+        <h2>这是一个头部组件----挂载在Component01下</h2>
     </div>
 </template>
 
@@ -26,14 +21,7 @@
 <style scoped>
 h1, h2 {
   font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
+  font-size:15px;
 }
 
 

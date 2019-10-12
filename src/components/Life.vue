@@ -1,6 +1,6 @@
 <template>
     <div id="life">
-        <h2>生命周期函数演示 ----{{msg}}</h2>
+        <h2>生命周期函数演示 ----{{msg}}--(挂载在Component01下)</h2>
         
         <button @click="setMsg()">执行方法改变msg</button>
     </div>
@@ -47,7 +47,11 @@
 
 
 <style scoped>
-
+h1, h2 {
+  font-weight: normal;
+  font-size:15px;
+  color:blue;
+}
 
 
 </style>
