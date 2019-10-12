@@ -1,37 +1,43 @@
 <template>
     <!-- 组件1、手动挂载 -->
     <div id="home">
-        <v-header></v-header>
+        <!-- 父组件向子组件传值
+            1、为其动态绑定一个属性 -->
+        <v-header :title="title" :run="run" :home="this"></v-header>
         <hr>
-        <h2>这是第一个组件Component01---{{msg}}</h2>
-        <hr>
+        首页组件
+        <!-- <h2>这是第一个组件Component01---{{msg}}</h2>
+        <hr> 
         <v-life v-if="flag"></v-life>
         <button @click="flag=!flag">挂载，卸载life组件</button>
         <hr> 
-        <v-resource></v-resource>
+        <v-resource></v-resource>-->
     </div>
 </template>
 
 <script>
     import Header from './Header.vue';
-    import Life from './Life.vue';
-    import Resource from './Resource.vue';
+    // import Life from './Life.vue';
+    // import Resource from './Resource.vue';
 
     export default{
         data() {
             return {
                 msg:'我是一个组件，挂载在根组件下',
+                title:'首页',
                 flag:true,
                 list:[]
             }
         },
         methods: {
-           
+           run(data){
+               alert('我是父组件的run方法'+data)
+           }
         },
         components:{
-            'v-header':Header,
-            'v-life':Life,
-            'v-resource':Resource
+            'v-header':Header
+            // 'v-life':Life,
+            // 'v-resource':Resource
         }
     }
 
@@ -39,9 +45,7 @@
 
 
 <style scoped>
-body{
-    margin:0px;
-}
+
 h1, h2 {
   font-weight: normal;
   font-size:15px;
