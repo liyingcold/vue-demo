@@ -7,11 +7,18 @@
         <v-header ref="header"></v-header>
         <hr>
         首页组件
+
+        <!-- 非父子组件传值 -->
+        <button @click="emitnews()">给news组件广播数据</button>
+
         <!-- 父组件获取子组件的数据和方法 -->
-        <button @click="getChildData()">获取子组件的数据和方法</button>
+        <!-- <button @click="getChildData()">获取子组件的数据和方法</button> -->
         <!-- <h2>这是第一个组件Component01-{{msg}}</h2>
-        <hr> 
-        <v-life v-if="flag"></v-life>
+        <hr> -->
+
+
+        <!-- 引入子组件 -->
+        <!--<v-life v-if="flag"></v-life>
         <button @click="flag=!flag">挂载，卸载life组件</button>
         <hr> 
         <v-resource></v-resource>-->
@@ -23,6 +30,11 @@
     // import Life from './Life.vue';
     // import Resource from './Resource.vue';
 
+
+    // 非父子组件传值,1、引入vue实例，2、广播数据
+    import vueEvent from '../model/VueEvent.js';
+
+
     export default{
         data() {
             return {
@@ -33,24 +45,35 @@
             }
         },
         methods: {
-        //    run(data){
-        //        alert('我是父组件的run方法'+data)
-        //    },
-        run(){
-            alert('我是父组件的run方法');
+            //    run(data){
+            //        alert('我是父组件的run方法'+data)
+            //    },
+            run(){
+                alert('我是父组件的run方法');
+            },
+            getChildData(){
+                /*获取子组件的数据*/
+                //    alert(this.$refs.header.msg)
+                /*获取子组件的方法*/
+                this.$refs.header.run()
+            },
+            emitnews(){
+                // 广播数据
+                vueEvent.$emit('to-news',this.msg)
+            }
+
         },
-           getChildData(){
-               /*获取子组件的数据*/
-            //    alert(this.$refs.header.msg)
-            /*获取子组件的方法*/
-            this.$refs.header.run()
-           }
+        mounted() {
+            vueEvent.$on('to-component01',function(data){
+                console.log(data)
+            })
         },
         components:{
             'v-header':Header
             // 'v-life':Life,
             // 'v-resource':Resource
         }
+        
     }
 
 </script>
