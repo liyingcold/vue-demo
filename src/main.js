@@ -8,7 +8,7 @@ import router from './router'
 /*基于非脚手架的路由配置（手动挡和自动挡的区别）
  import VueRouter from 'vue-router';
  Vue.use(VueRouter);*/
- /*自动挂载
+ /*非脚手架的自动挂载
    1、创建组件
    2、配置路由
    3、实例化vue
@@ -49,6 +49,7 @@ const router=new VueRouter({
 */
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+
 
 
 

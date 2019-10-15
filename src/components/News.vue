@@ -1,7 +1,14 @@
 <template>
-    <div>
+    <div id="news">
         <h2>{{msg}}</h2>
-        <button @click="emitComponent01()">给首页组件广播数据</button>
+        <!-- <button @click="emitComponent01()">给首页组件广播数据</button> -->
+        <ul>
+          <li v-for="(item, index) in list" :key="index">
+          <!-- 动态路由传值 -->
+            <router-link :to="'/content/'+item.aid">{{item.title}}</router-link>
+            
+          </li>
+        </ul>
     </div>
 </template>
 
@@ -23,19 +30,30 @@
     export default{
         data() {
             return {
-                msg:'我是一个新闻组件'
+                msg:'我是一个新闻组件',
+                list:[]
             }
         },
         methods: {
-          emitComponent01(){
+          /*emitComponent01(){
             // 广播数据
             vueEvent.$emit('to-component01',this.msg)
+            }*/
+            requestData(){
+              var api='http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1';
+              // jsonp请求的话 后台接口要支持jsonp
+              this.$http.jsonp(api).then((response)=>{
+               this.list=response.body.result;
+              },(err)=>{
+                console.log(err)
+              })
             }
         },
         mounted() {
-          vueEvent.$on('to-news',function(data){
+          /*vueEvent.$on('to-news',function(data){
               console.log(data);
-            })
+            })*/
+            this.requestData()
         }
     }
 </script>
@@ -50,7 +68,7 @@ ul {
   padding: 0;
 }
 li {
-  display: inline-block;
+  
   margin: 0 10px;
 }
 

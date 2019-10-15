@@ -8,8 +8,15 @@
         <hr>
         首页组件
 
+        <ul>
+          <li v-for="(item, index) in list" :key="index">
+          <!-- 动态路由传值 -->
+            <router-link :to="'/pcontent?aid='+index">{{item}}</router-link>
+            
+          </li>
+        </ul>
         <!-- 非父子组件传值 -->
-        <button @click="emitnews()">给news组件广播数据</button>
+        <!-- <button @click="emitnews()">给news组件广播数据</button> -->
 
         <!-- 父组件获取子组件的数据和方法 -->
         <!-- <button @click="getChildData()">获取子组件的数据和方法</button> -->
@@ -41,32 +48,32 @@
                 msg:'我是一个总组件，挂载在根组件下',
                 title:'首页',
                 flag:true,
-                list:[]
+                list:['商品111111','商品222222','商品33333']
             }
         },
         methods: {
-            //    run(data){
-            //        alert('我是父组件的run方法'+data)
-            //    },
+            /*  run(data){
+                        alert('我是父组件的run方法'+data)
+                },
             run(){
                 alert('我是父组件的run方法');
-            },
-            getChildData(){
-                /*获取子组件的数据*/
+            },*/
+            /*getChildData(){
+                //获取子组件的数据
                 //    alert(this.$refs.header.msg)
-                /*获取子组件的方法*/
+                //获取子组件的方法
                 this.$refs.header.run()
-            },
-            emitnews(){
+            },*/
+            /*emitnews(){
                 // 广播数据
                 vueEvent.$emit('to-news',this.msg)
-            }
+            }*/
 
         },
         mounted() {
-            vueEvent.$on('to-component01',function(data){
+            /*vueEvent.$on('to-component01',function(data){
                 console.log(data)
-            })
+            })*/
         },
         components:{
             'v-header':Header,

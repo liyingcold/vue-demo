@@ -6,6 +6,8 @@ import ToDoListDemo01 from '@/components/ToDoListDemo01'
 import ToDoListDemo02 from '@/components/ToDoListDemo02'
 import Component01 from '@/components/Component01'
 import News from '@/components/News'
+import Content from '@/Components/Content'
+import Pcontent from '@/Components/Pcontent'
 
 
 Vue.use(Router)
@@ -40,6 +42,21 @@ export default new Router({
     {
       path:'/news',
       name:'news',
-      component:News}
+      component:News
+    },
+    {
+      path:'/content/:aid',/*动态路由 1、配置*/
+      name:'content',
+      component:Content
+    },
+    {
+      path:'/pcontent',
+      name:'content',
+      component:Pcontent
+    },
+    {
+      path:'*',
+      redirect:'/home'
+    }
   ]
 })
