@@ -20,15 +20,15 @@
         <!-- 引入子组件 -->
         <!--<v-life v-if="flag"></v-life>
         <button @click="flag=!flag">挂载，卸载life组件</button>
-        <hr> 
-        <v-resource></v-resource>-->
+        <hr> -->
+        <v-resource></v-resource>
     </div>
 </template>
 
 <script>
     import Header from './Header.vue';
     // import Life from './Life.vue';
-    // import Resource from './Resource.vue';
+    import Resource from './Resource.vue';
 
 
     // 非父子组件传值,1、引入vue实例，2、广播数据
@@ -69,9 +69,9 @@
             })
         },
         components:{
-            'v-header':Header
+            'v-header':Header,
             // 'v-life':Life,
-            // 'v-resource':Resource
+            'v-resource':Resource
         }
         
     }
