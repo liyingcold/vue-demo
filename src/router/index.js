@@ -13,6 +13,7 @@ import Pcontent from '@/Components/Pcontent'
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',/*hash模式改为history模式 */
   routes: [
     {
       path: '/hello',

@@ -4,17 +4,23 @@
         <!-- 父组件向子组件传值
             1、为其动态绑定一个属性 -->
         <!--  <v-header :title="title" :run="run" :home="this"></v-header> -->
-        <v-header ref="header"></v-header>
+        <!-- <v-header ref="header"></v-header> -->
         <hr>
         首页组件
 
-        <ul>
+        <!-- 编程式导航js -->
+        <button @click="goNews()">通过js跳转到新闻页面</button>
+
+
+
+        <!-- 动态路由传值 -->
+        <!-- <ul>
           <li v-for="(item, index) in list" :key="index">
-          <!-- 动态路由传值 -->
             <router-link :to="'/pcontent?aid='+index">{{item}}</router-link>
-            
           </li>
-        </ul>
+        </ul> -->
+
+        
         <!-- 非父子组件传值 -->
         <!-- <button @click="emitnews()">给news组件广播数据</button> -->
 
@@ -28,18 +34,18 @@
         <!--<v-life v-if="flag"></v-life>
         <button @click="flag=!flag">挂载，卸载life组件</button>
         <hr> -->
-        <v-resource></v-resource>
+        <!-- <v-resource></v-resource> -->
     </div>
 </template>
 
 <script>
-    import Header from './Header.vue';
+    // import Header from './Header.vue';
     // import Life from './Life.vue';
-    import Resource from './Resource.vue';
+    // import Resource from './Resource.vue';
 
 
     // 非父子组件传值,1、引入vue实例，2、广播数据
-    import vueEvent from '../model/VueEvent.js';
+    // import vueEvent from '../model/VueEvent.js';
 
 
     export default{
@@ -69,6 +75,15 @@
                 vueEvent.$emit('to-news',this.msg)
             }*/
 
+            /* 编程式导航js */
+            goNews(){
+                /*通过路径 
+                 this.$router.push({path:'news'})
+                 this.$router.push({path:'/content/495'})*/
+
+                /* 通过别名*/
+                this.$router.push({name:'news'})
+            }
         },
         mounted() {
             /*vueEvent.$on('to-component01',function(data){
@@ -76,9 +91,9 @@
             })*/
         },
         components:{
-            'v-header':Header,
+            // 'v-header':Header,
             // 'v-life':Life,
-            'v-resource':Resource
+            // 'v-resource':Resource
         }
         
     }
