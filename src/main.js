@@ -48,7 +48,10 @@ const router=new VueRouter({
       })
 */
 import VueResource from 'vue-resource'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 Vue.use(VueResource)
+Vue.use(MintUI)
 
 
 

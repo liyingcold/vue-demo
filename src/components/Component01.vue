@@ -10,6 +10,8 @@
 
         <!-- 编程式导航js -->
         <button @click="goNews()">通过js跳转到新闻页面</button>
+        <mt-button type="default">default</mt-button>
+        <mt-button type="primary">primary</mt-button>
 
 
 
@@ -102,7 +104,7 @@
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
 
 h1, h2 {
   font-weight: normal;
