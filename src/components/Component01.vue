@@ -77,11 +77,12 @@
 
             /* 编程式导航js */
             goNews(){
-                /*通过路径 
+                
+                /*跳转方式1、通过路径 
                  this.$router.push({path:'news'})
                  this.$router.push({path:'/content/495'})*/
 
-                /* 通过别名*/
+                /* 跳转方式2、通过别名*/
                 this.$router.push({name:'news'})
             }
         },

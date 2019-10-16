@@ -8,12 +8,14 @@ import Component01 from '@/components/Component01'
 import News from '@/components/News'
 import Content from '@/Components/Content'
 import Pcontent from '@/Components/Pcontent'
-
+import User from '@/Components/User'
+import UserAdd from '@/Components/UserInfo/UserAdd'
+import UserList from '@/Components/UserInfo/UserList'
 
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',/*hash模式改为history模式 */
+  /*mode:'history',hash模式改为history模式 */
   routes: [
     {
       path: '/hello',
@@ -58,6 +60,24 @@ export default new Router({
     {
       path:'*',
       redirect:'/home'
-    }
+    },
+    {
+      path:'/user',
+      name:'user',
+      component:User,
+      children:[
+        {
+          path:'useradd',
+          name:'useradd',
+          component:UserAdd
+        },
+        {
+          path:'userlist',
+          name:'userlist',
+          component:UserList
+        }
+      ]
+    },
+    
   ]
 })

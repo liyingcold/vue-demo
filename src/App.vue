@@ -6,6 +6,7 @@
 
     <router-link to="/home">首页</router-link>
     <router-link to="/news">新闻</router-link>
+    <router-link to="/user">用户</router-link>
     <router-view/>
     <!-- 手动挂载 3、在模板中使用该组件 -->
     <!-- <div class="news"><v-news></v-news></div>
@@ -41,8 +42,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
   color: #2c3e50;
 }
-
 </style>
